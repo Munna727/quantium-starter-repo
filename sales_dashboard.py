@@ -12,6 +12,7 @@ df = df.sort_values("date")
 
 # Create app
 app = Dash(__name__)
+server = app.server
 
 # Layout
 app.layout = html.Div([
