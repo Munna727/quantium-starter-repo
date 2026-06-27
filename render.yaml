@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: pink-morsel-dashboard
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn sales_dashboard:app.server
