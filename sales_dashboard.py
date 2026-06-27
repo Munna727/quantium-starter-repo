@@ -1,9 +1,13 @@
 import pandas as pd
 from dash import Dash, html, dcc, Input, Output
 import plotly.express as px
+from pathlib import Path
+import pandas as pd
 
-# Load data
-df = pd.read_csv("output.csv")
+BASE_DIR = Path(__file__).parent
+DATA_FILE = BASE_DIR / "output.csv"
+
+df = pd.read_csv(DATA_FILE)
 df = df.sort_values("date")
 
 # Create app
@@ -14,6 +18,7 @@ app.layout = html.Div([
 
     html.H1(
         "📊 Pink Morsel Sales Dashboard",
+        id="header",
         style={
             "textAlign": "center",
             "color": "#ffffff",
@@ -72,7 +77,7 @@ style={
     "fontFamily": "Segoe UI"
 })
 
-# Callback
+
 @app.callback(
     Output("sales-graph", "figure"),
     Input("region-radio", "value")
